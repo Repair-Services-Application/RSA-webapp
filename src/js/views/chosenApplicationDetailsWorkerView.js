@@ -91,9 +91,9 @@ const ChosenApplicationDetailsWorkerView = ({ reparationStatuses, applicationDat
                 makeChanges();
                 navToApplicationsList();
               }
-              }>Submit the Decision</Button>
+              }>Submit the changes</Button>
 
-            <Button id="cancelButton" className="mr-2 btnSize p-2 " variant="outline-dark"
+            <Button id="cancelButton" className="mr-2 btnSize p-2 " variant="danger"
               onClick={(e) => {
                 e.preventDefault();
                 navToApplicationsList();
