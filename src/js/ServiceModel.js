@@ -11,8 +11,9 @@ class ServiceModel {
         this.subscribers = [];
         this.categories = [];
         this.category = {
+            categoryRelationId: null,
             categoryId: null,
-            description: null,
+            categoryDescription: null,
             parentCategoryId: null,
         };
 
@@ -98,10 +99,10 @@ class ServiceModel {
      * @param {string} reparationStatusId The Id of the current reparation status of the application.
      *                      Leaving it empty means no filtering with reparationStatusId.
      */
-    filterApplications(applicationId, categoryId, firstname, lastname, dateOfRegistrationFrom,
+    filterApplications(applicationId, categoryRelationId, firstname, lastname, dateOfRegistrationFrom,
         dateOfRegistrationTo, suggestedPriceFrom, suggestedPriceTo, reparationStatusId) {
 
-        ApiData.listApplications(applicationId, categoryId, firstname, lastname, dateOfRegistrationFrom,
+        ApiData.listApplications(applicationId, categoryRelationId, firstname, lastname, dateOfRegistrationFrom,
             dateOfRegistrationTo, suggestedPriceFrom, suggestedPriceTo, reparationStatusId)
             .then((result) => {
                 if (result.ok) {
@@ -251,8 +252,8 @@ class ServiceModel {
      * @param {number} categoryId The category id that is related to the service.
      * @param {string} problemDescription The problem description of the submitted application.
      */
-    submitApplication(categoryId, problemDescription) {
-        ApiData.submitApplication(categoryId, problemDescription)
+    submitApplication(categoryRelationId, problemDescription) {
+        ApiData.submitApplication(categoryRelationId, problemDescription)
             .then((result) => {
                 if (result.ok) {
                     result.json().then((data) => {
@@ -280,19 +281,19 @@ class ServiceModel {
      * @param {number} unfilteredCategoryId The unfiltered category Id that could be empty.
      * @param {string} unfilteredProblemDescription The problem description of the application that could be empty.
      */
-    filterSubmittedApplicationData(unfilteredCategoryId, unfilteredProblemDescription) {
+    filterSubmittedApplicationData(unfilteredCategoryRelationId, unfilteredProblemDescription) {
 
-        let categoryId = 0;
+        let categoryRelationId = 0;
         let problemDescription = "";
 
-        if (unfilteredCategoryId !== "") {
-            categoryId = parseInt(unfilteredCategoryId);
+        if (unfilteredCategoryRelationId !== "") {
+            categoryRelationId = parseInt(unfilteredCategoryRelationId);
         }
         if (unfilteredProblemDescription !== "" && unfilteredProblemDescription !== undefined) {
             problemDescription = unfilteredProblemDescription;
         }        
 
-        this.submitApplication(categoryId, problemDescription);
+        this.submitApplication(categoryRelationId, problemDescription);
     }
 
     /**
@@ -314,8 +315,9 @@ class ServiceModel {
             for (let i = 0; i < dataContent.length; i++) {
 
                 this.category = {
+                    categoryRelationId: dataContent[i].categoryRelationId,
                     categoryId: dataContent[i].categoryId,
-                    description: dataContent[i].description,
+                    categoryDescription: dataContent[i].categoryDescription,
                     parentCategoryId: dataContent[i].parentCategoryId,
                 };
 

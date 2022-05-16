@@ -187,12 +187,12 @@ const ApiData = {
      * @param {number} reparationStatusId The application's reparation status id
      * @returns a list of the filtered applications according to the filtering parameters.
      */
-    listApplications(applicationId, categoryId, firstname, lastname, dateOfRegistrationFrom,
+    listApplications(applicationId, categoryRelationId, firstname, lastname, dateOfRegistrationFrom,
         dateOfRegistrationTo, suggestedPriceFrom, suggestedPriceTo, reparationStatusId) {
         return this.apiCall(
             'service/getApplicationsByWorker?' + new URLSearchParams({
                 "applicationId": applicationId,
-                "categoryId": categoryId,
+                "categoryRelationId": categoryRelationId,
                 "firstname": firstname,
                 "lastname": lastname,
                 "dateOfRegistrationFrom": dateOfRegistrationFrom,
@@ -258,7 +258,7 @@ const ApiData = {
      * @param {string} problemDescription The problem description of the submitted application.
      * @returns {Response} The response after trying to register the new application for the user.
      */
-     submitApplication(categoryId, problemDescription) {
+     submitApplication(categoryRelationId, problemDescription) {
         return this.apiCall(
             'service/registerApplication'
             , {
@@ -269,7 +269,7 @@ const ApiData = {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "categoryId": categoryId,
+                    "categoryRelationId": categoryRelationId,
                     "problemDescription": problemDescription
                 }),
             }

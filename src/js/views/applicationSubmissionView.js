@@ -1,6 +1,6 @@
 import { Button, Form, InputGroup, Card, CardDeck, Container, Row, Col } from "react-bootstrap";
 
-const ApplicationSubmissionView = ({ categories, setCategoryId, setProblemDescription, submitApplicationText, submitApplication}) => (
+const ApplicationSubmissionView = ({ categories, setCategoryRelationId, setProblemDescription, submitApplicationText, submitApplication}) => (
   <div>
     <Container>
         <Card className="p-2 radiusDimensions borderlessTD">
@@ -15,10 +15,10 @@ const ApplicationSubmissionView = ({ categories, setCategoryId, setProblemDescri
                 <Col>
                 <Container>
                     <Form.Label>Choose category: </Form.Label>
-                    <Form.Control className="btnSize mr-2" size="md" as="select" onChange={(e) => setCategoryId(e.target.value)} required>
+                    <Form.Control className="btnSize mr-2" size="md" as="select" onChange={(e) => setCategoryRelationId(e.target.value)} required>
                       <option value="category" hidden> product's category type</option>
                       {categories.map(category => (
-                        <option key={category.categoryId} value={category.categoryId} >{category.description}</option>
+                        <option key={category.categoryRelationId} value={category.categoryRelationId} >{category.categoryDescription}</option>
                       ))}
                     </Form.Control>
                     </Container>
