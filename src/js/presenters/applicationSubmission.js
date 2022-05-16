@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
  */
 function ApplicationSubmission({ serviceModel }) {
 
-  const [categoryId, setCategoryId] = React.useState("");
+  const [categoryRelationId, setCategoryRelationId] = React.useState("");
 
   let submitApplicationText = "Submit the application";
   let categories = useModelProp(serviceModel, "categories")
@@ -41,11 +41,11 @@ function ApplicationSubmission({ serviceModel }) {
   return (
     React.createElement(ApplicationSubmissionView, {
       categories: categories,
-      setCategoryId: categoryId => setCategoryId(categoryId),
+      setCategoryRelationId: categoryRelationId => setCategoryRelationId(categoryRelationId),
       setProblemDescription: problemDescription => setProblemDescription(problemDescription),
       submitApplicationText: submitApplicationText,
       submitApplication: () => {
-        serviceModel.filterSubmittedApplicationData(categoryId, problemDescription)
+        serviceModel.filterSubmittedApplicationData(categoryRelationId, problemDescription)
       },
     })
   );

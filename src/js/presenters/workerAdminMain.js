@@ -20,7 +20,7 @@ import { toast } from 'react-toastify';
  */
 function WorkerAdminMain({ serviceModel, navToApplicationDetails }) {
   const [applicationId, setApplicationId] = React.useState("");
-  const [categoryId, setCategoryId] = React.useState("");
+  const [categoryRelationId, setCategoryRelationId] = React.useState("");
   const [firstname, setFirstname] = React.useState("");
   const [lastname, setLastname] = React.useState("");
   const [dateOfRegistrationFrom, setDateOfRegistrationFrom] = React.useState("");
@@ -41,7 +41,7 @@ function WorkerAdminMain({ serviceModel, navToApplicationDetails }) {
     React.createElement(WorkerAdminFilterView, {
       setApplicationId: applicationId => setApplicationId(applicationId),
       categories: categories,
-      setCategoryId: categoryId => setCategoryId(categoryId),
+      setCategoryRelationId: categoryRelationId => setCategoryRelationId(categoryRelationId),
       setFirstname: firstname => setFirstname(firstname),
       setLastname: lastname => setLastname(lastname),
       dateOfRegistrationFrom: dateOfRegistrationFrom,
@@ -53,7 +53,7 @@ function WorkerAdminMain({ serviceModel, navToApplicationDetails }) {
       reparationStatuses: reparationStatuses,
       setReparationStatusId: reparationStatusId => setReparationStatusId(reparationStatusId),
       handleAppliedFilter: () => {
-        serviceModel.filterUnFilteredApplicationsData(applicationId, categoryId, firstname, lastname, dateOfRegistrationFrom,
+        serviceModel.filterUnFilteredApplicationsData(applicationId, categoryRelationId, firstname, lastname, dateOfRegistrationFrom,
           dateOfRegistrationTo, suggestedPriceFrom, suggestedPriceTo, reparationStatusId);
       },
     }),

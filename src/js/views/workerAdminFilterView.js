@@ -2,7 +2,7 @@ import { Button, Card, Form, InputGroup, Col, Row } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const WorkerAdminFilterView = ({ setApplicationId, categories, setCategoryId, setFirstname, setLastname,
+const WorkerAdminFilterView = ({ setApplicationId, categories, setCategoryRelationId, setFirstname, setLastname,
   dateOfRegistrationFrom, setDateOfRegistrationFrom, dateOfRegistrationTo, setDateOfRegistrationTo, 
   setSuggestedPriceFrom, setSuggestedPriceTo, reparationStatuses, setReparationStatusId, handleAppliedFilter }) => (
   <Card className="p-1">
@@ -19,11 +19,11 @@ const WorkerAdminFilterView = ({ setApplicationId, categories, setCategoryId, se
               <Col>
                 <Form.Group controlId="formBasicCategories" className=" p-1">
                   <Form.Label>Categories:</Form.Label>
-                  <Form.Control size="md" as="select" onChange={(e) => setCategoryId(e.target.value)}>
+                  <Form.Control size="md" as="select" onChange={(e) => setCategoryRelationId(e.target.value)}>
                     <option value="0"> Any competence </option>
                     {categories.map(category => (
-                      <option key={category.categoryId} value={category.categoryId} >{category.description}</option>
-                    ))}
+                        <option key={category.categoryRelationId} value={category.categoryRelationId} >{category.categoryDescription}</option>
+                      ))}
                   </Form.Control>
                 </Form.Group>
               </Col>
